@@ -21,10 +21,8 @@ export class DataService {
         headers: { "content-type": "application/x-www-form-urlencoded" }
       })
       .pipe(
-        map((data: any) => {
-          console.log(data);
-          console.log(data.json.test);
-          this.json = JSON.stringify(data.json);
+        map((res: Response) => {
+          this.json = JSON.stringify(res.json);
         })
       );
   }
