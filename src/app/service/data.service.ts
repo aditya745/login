@@ -1,31 +1,22 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, tap } from "rxjs/operators";
-import { qs, stringify } from "qs";
+ 
+import { Injectable } from '@angular/core';
+import {HttpClient } from '@angular/common/http'
+import {stringify} from 'qs'
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
-export class DataService {
-  constructor(private http: HttpClient) {}
+export class HttpService {
   postData = stringify({
-    grant_type: "password",
-    username: "creditorapp",
-    password: "MwDqpNE2rjVoN3fS"
+    grant_type: 'password',
+    username: 'creditorapp',
+    password: 'MwDqpNE2rjVoN3fS',
   });
   url = `https://api.stage.ktilaskutus.fi/v1/oauth/token`;
-  json;
+  constructor(private http: HttpClient) { }
 
-  login() {
-    return this.http
-      .post(this.url, this.postData, {
-        headers: { "content-type": "application/x-www-form-urlencoded" }
-      })
-      .pipe(
-        map((data: any) => {
-          console.log(data);
-          console.log(data.json.test);
-          this.json = JSON.stringify(data.json);
-        })
-      );
+  accessApi() {
+    this.http.post(this.url, this.postData, {headers: {"content-type": "application/x-www-form-urlencoded"}} ).toPromise().then((data:any) => {
+      console.log(data);
+    });
   }
 }
