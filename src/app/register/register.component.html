@@ -1,0 +1,31 @@
+<div class="form-wraper">
+  <mat-card class="form-container card with-default-shadow ">
+    <div class="form-header">
+      <mat-card-header>Sign Up</mat-card-header>
+    </div>
+
+    <form class="form-body">
+      <mat-form-field class="justifier" color="primary" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput text="email" class="form-input form-control" />
+      </mat-form-field>
+      <mat-form-field class="justifier" color="primary" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput text="password" class="form-input form-control" />
+      </mat-form-field>
+      <mat-form-field class="justifier" color="primary" appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput text="password" class="form-input form-control" />
+      </mat-form-field>
+    </form>
+
+    <div class="form-footer">
+      <button mat-raised-button class="btn custom-btn" color="primary">
+        Register
+      </button>
+    </div>
+    <div class="additional-link">
+      <a routerLink="/login">Already have an Account? <strong>Login</strong></a>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+  <mat-card
+    class="form-container card with-default-shadow form-wraper"
+    color="primary"
+  >
+    <div>
+      <mat-card-header class="form-header">
+        Log In
+      </mat-card-header>
+    </div>
+    <form class="form-body" [formGroup]="registrationForm">
+      <mat-form-field
+        class="justifier"
+        color="primary"
+        appearance="outline"
+        [hideRequiredMarker]="true"
+      >
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          text="email"
+          class="form-input"
+          formControlName="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="justifier" color="primary" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          text="password"
+          class="form-input"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </form>
+
+    <div class="form-footer">
+      <mat-radio-button value="1" class="radio-button" color="primary"
+        >Option 1</mat-radio-button
+      >
+      <button
+        mat-raised-button
+        class="btn custom-btn"
+        type="submit"
+        color="primary"
+      >
+        Login
+      </button>
+    </div>
+    <div class="additional-link">
+      <a routerLink="/register">No Account? <strong>Create one here</strong></a>
+    </div>
+  </mat-card>
+</div>
