@@ -1,6 +1,5 @@
-import { Component } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
-import { DataService } from "./service/data.service";
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./service/data.service";
 
 @Component({
   selector: "app-root",
@@ -8,17 +7,19 @@ import { DataService } from "./service/data.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  constructor(private fb: FormBuilder, private dataSevice: DataService) {}
-
-  registrationForm = this.fb.group({
-    email: ["", Validators.required],
-    password: [""],
-    confirmPassword: [""]
-  });
-
-  ngOnInIt() {
-    this.dataSevice.login().subscribe(data => {
-      console.log(data);
+  private username = "";
+  private password = "";
+  constructor(private _http: AuthService) {}
+  ngOnInit() {
+    this._http.Authentication(this.username, this.password).subscribe(data => {
+      if (data["token"] != null) {
+        // retreive the access token from the server
+        console.log(data["token"]);
+        // store the token in the localStorage
+        localStorage.setItem("access-token", data["token"]);
+      } else {
+        console.log("check your credentials !!");
+      }
     });
   }
 }
